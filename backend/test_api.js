@@ -1,7 +1,9 @@
+const API_BASE_URL = process.env.API_BASE_URL || 'https://formgenie-6vo5.onrender.com/api';
+
 async function runTest() {
   try {
     console.log("Registering user...");
-    const regRes = await fetch('http://localhost:5000/api/auth/register', {
+    const regRes = await fetch(`${API_BASE_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -17,7 +19,7 @@ async function runTest() {
     console.log("Registration successful! Token:", token.substring(0, 10) + "...");
 
     console.log("Creating a form...");
-    const formRes = await fetch('http://localhost:5000/api/forms', {
+    const formRes = await fetch(`${API_BASE_URL}/forms`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
@@ -37,7 +39,7 @@ async function runTest() {
     console.log(`Form created successfully! ID: ${formId}`);
 
     console.log("Submitting response...");
-    const submitRes = await fetch(`http://localhost:5000/api/forms/${formId}/responses`, {
+    const submitRes = await fetch(`${API_BASE_URL}/forms/${formId}/responses`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -49,7 +51,7 @@ async function runTest() {
     console.log("Response submitted successfully!");
 
     console.log("Testing export...");
-    const exportRes = await fetch(`http://localhost:5000/api/forms/${formId}/export`, {
+    const exportRes = await fetch(`${API_BASE_URL}/forms/${formId}/export`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });

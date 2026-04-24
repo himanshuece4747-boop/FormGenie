@@ -1,12 +1,14 @@
 // const fs = require('fs');
 
+// const API_BASE_URL = process.env.API_BASE_URL || 'https://formgenie-6vo5.onrender.com/api';
+//
 // async function testBackend() {
 //   try {
 //     console.log("==> Starting Backend Validation...");
     
 //     // 1. Register a new user
 //     console.log("1. Registering user...");
-//     const regRes = await fetch('http://localhost:5000/api/auth/register', {
+//     const regRes = await fetch(`${API_BASE_URL}/auth/register`, {
 //       method: 'POST',
 //       headers: { 'Content-Type': 'application/json' },
 //       body: JSON.stringify({
@@ -23,7 +25,7 @@
 
 //     // 2. Create a Custom Form
 //     console.log("2. Creating Custom Form...");
-//     const formRes = await fetch('http://localhost:5000/api/forms', {
+//     const formRes = await fetch(`${API_BASE_URL}/forms`, {
 //       method: 'POST',
 //       headers: { 
 //         'Content-Type': 'application/json',
@@ -44,7 +46,7 @@
 
 //     // 3. Submit first response (Anonymous / by IP tracking)
 //     console.log("3. Submitting first response (Anonymous)...");
-//     const submit1 = await fetch(`http://localhost:5000/api/forms/${formId}/responses`, {
+//     const submit1 = await fetch(`${API_BASE_URL}/forms/${formId}/responses`, {
 //       method: 'POST',
 //       headers: { 'Content-Type': 'application/json' },
 //       body: JSON.stringify({
@@ -57,7 +59,7 @@
 
 //     // 4. Submit duplicate response (Should Fail)
 //     console.log("4. Attempting duplicate submission (Anonymous)...");
-//     const submit2 = await fetch(`http://localhost:5000/api/forms/${formId}/responses`, {
+//     const submit2 = await fetch(`${API_BASE_URL}/forms/${formId}/responses`, {
 //       method: 'POST',
 //       headers: { 'Content-Type': 'application/json' },
 //       body: JSON.stringify({
@@ -73,7 +75,7 @@
 
 //     // 5. Test Quick Stats API
 //     console.log("5. Fetching Admin Quick Stats...");
-//     const statsRes = await fetch('http://localhost:5000/api/forms/stats', {
+//     const statsRes = await fetch(`${API_BASE_URL}/forms/stats`, {
 //       headers: { 'Authorization': `Bearer ${token}` }
 //     });
 //     const statsData = await statsRes.json();

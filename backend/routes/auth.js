@@ -7,6 +7,8 @@ const { auth } = require('../middleware/auth');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
+const CLIENT_URL = process.env.CLIENT_URL || 'https://form-genie-eyni.vercel.app';
+
 // @route   POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
@@ -113,7 +115,7 @@ router.post('/forgot-password', async (req, res) => {
     user.resetPasswordExpire = Date.now() + 10 * 60 * 1000; // 10 minutes
     await user.save();
 
-    const resetUrl = `http://localhost:5174/reset-password/${resetToken}`;
+    const resetUrl = `${CLIENT_URL}/reset-password/${resetToken}`;
     
     // Simulate email
     let testAccount = await nodemailer.createTestAccount();
